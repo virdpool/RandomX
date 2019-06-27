@@ -50,7 +50,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define RANDOMX_SUPERSCALAR_MAX_SIZE  512
 
 //Dataset base size in bytes. Must be a power of 2.
-#define RANDOMX_DATASET_BASE_SIZE  1073741824 // 2^30, ~1GB, tweaked for Arweave
+#define RANDOMX_DATASET_BASE_SIZE  536870912 // 2^29 = 512 Mi (bytes), tweaked for Arweave
 
 //Dataset extra size. Must be divisible by 64.
 #define RANDOMX_DATASET_EXTRA_SIZE 31563008 // 493172 (just an arbitrary number) * 64, tweaked for Arweave
