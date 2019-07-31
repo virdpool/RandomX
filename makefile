@@ -1,6 +1,6 @@
 #CXX=g++-8
 #CC=gcc-8
-#AR=gcc-ar
+SYSTEM=$(shell uname -s)
 PLATFORM=$(shell uname -m)
 CXXFLAGS=-std=c++11 -fPIC
 CCFLAGS=-std=c99
@@ -13,6 +13,9 @@ LDFLAGS=-lpthread
 RXA=$(BINDIR)/randomx.a
 BINARIES=$(RXA) $(BINDIR)/benchmark $(BINDIR)/code-generator
 RXOBJS=$(addprefix $(OBJDIR)/,aes_hash.o argon2_ref.o dataset.o soft_aes.o virtual_memory.o vm_interpreted.o allocator.o assembly_generator_x86.o instruction.o randomx.o superscalar.o vm_compiled.o vm_interpreted_light.o argon2_core.o blake2_generator.o instructions_portable.o reciprocal.o virtual_machine.o vm_compiled_light.o blake2b.o)
+ifeq ($(SYSTEM),Linux)
+    AR=gcc-ar
+endif
 ifeq ($(PLATFORM),amd64)
     RXOBJS += $(addprefix $(OBJDIR)/,jit_compiler_x86_static.o jit_compiler_x86.o)
     CXXFLAGS += -maes
